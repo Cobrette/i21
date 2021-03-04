@@ -1,0 +1,138 @@
+#
+# Fichier à compléter: deplacement.py
+#
+# Chaque fonction doit renvoyer la liste des indices (col, lig) des
+# cases sur la pièce en question peut aller.
+#
+à partir de l'  importation mathématique  * 
+
+def  cases_fou ( col , lig ):
+    "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer un fou positionné sur la case (col, lig)
+    Ex: fou en (2,3)
+    - - - - - - - - - -
+    | x |
+    | xx |
+    | xx |
+    | F |
+    | xx |
+    | xx |
+    | x |
+    | x |
+    - - - - - - - - - -
+    "" "
+    diag_1  = [( x , y ) pour  x  dans la  plage ( 0 , 8 ) pour  y  dans la  plage ( 0 , 8 ) si  x  -  col  ==  y  -  lig  et  non  x  ==  col ]
+    diag_2  = [( x , y ) pour  x  dans la  plage ( 0 , 8 ) pour  y  dans la  plage ( 0 , 8 ) si  x  -  col  ==  lig  -  y  et  non  x  ==  col ]
+    retourne  diag_1  +  diag_2
+
+def  cases_tour ( col , lig ):
+    "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer une tour positionnée sur la case (col, lig)
+    Ex: tour en (5,3)
+    - - - - - - - - - -
+    | x |
+    | x |
+    | x |
+    | xxxxx T xx |
+    | x |
+    | x |
+    | x |
+    | x |
+    - - - - - - - - - -
+    "" "
+    ligne  = [( col , x ) pour  x  en  série ( 0 , 8 ) si  pas  x  ==  lig ]
+    colonne  = [( y , lig ) pour  y  en  série ( 0 , 8 ) si  pas  y  ==  col ]
+
+    retour  ligne  +  colonne
+
+def  cases_reine ( col , lig ):
+    "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer un fou positionnée sur la case (col, lig)
+    Ex: dame en (6,1)
+    - - - - - - - - - -
+    | xxx |
+    | xxxxxx D x |
+    | xxx |
+    | xx |
+    | xx |
+    | xx |
+    | xx |
+    | xx |
+    - - - - - - - - - -
+    "" "
+    ligne  = [( col , x ) pour  x  en  série ( 0 , 8 ) si  pas  x  ==  lig ]
+    colonne  = [( y , lig ) pour  y  en  série ( 0 , 8 ) si  pas  y  ==  col ]
+
+    diag_1  = [( x , y ) pour  x  dans la  plage ( 0 , 8 ) pour  y  dans la  plage ( 0 , 8 ) si  x  -  col  ==  y  -  lig  et  non  x  ==  col ]
+    diag_2  = [( x , y ) pour  x  dans la  plage ( 0 , 8 ) pour  y  dans la  plage ( 0 , 8 ) si  x  -  col  ==  lig  -  y  et  non  x  ==  col ]
+
+    retour  ligne  +  colonne  +  diag_1  +  diag_2
+
+def  cases_roi ( col , lig ):
+   "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer un roi positionné sur la case (col, lig)
+    Ex: Roi en (4,5)
+    - - - - - - - - - -
+    | |
+    | |
+    | |
+    | |
+    | xxx |
+    | x R x |
+    | xxx |
+    | |
+    - - - - - - - - - -
+   "" "
+   cas  = []
+
+   r1  =  intervalle ( col  -  1 , col  +  2 )
+   r2  =  intervalle ( lig  -  1 , lig  +  2 )
+
+   renvoie [( x , y ) pour  x  dans  r1  pour  y  dans  r2  si ( x  > =  0  et  x  <=  7 ) et ( y  > =  0  et  y  <=  7 ) et  non ( x , y ) == ( col , lig )]
+
+def  cases_cavalier ( col , lig ):
+    "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer un fou positionné sur la case (col, lig)
+    Ex: cavalier en (3,3)
+    - - - - - - - - - -
+    | |
+    | xx |
+    | xx |
+    | C |
+    | xx |
+    | xx |
+    | |
+    | |
+    - - - - - - - - - -
+    "" "
+
+    cas  = []
+    pour  x  dans la  plage ( col  -  2 , col  +  3 ):
+        pour  y  dans l'  intervalle ( lig  -  2 , lig  +  3 ):
+            d  =  sqrt (( col  -  x ) **  2  + ( lig  -  y ) **  2 )
+            si  non ( x , y ) == ( col , lig ) et  2  <  d  <=  2,5 :
+                si  x  > =  0  et  x  <=  7  et  y  > =  0  et  y  <=  7 :
+                    cas  + = [( x , y )]
+
+     cas de retour
+
+def  cases_pion ( col , lig ):
+    "" "Retourne la liste des indices (col, lig) des cas où peut se
+    déplacer un fou positionné sur la case (col, lig)
+    Ex: pions en (1,6) et (5,3)
+    - - - - - - - - - -
+    | |
+    | |
+    | x |
+    | P |
+    | x |
+    | x |
+    | P |
+    | |
+    - - - - - - - - - -
+    "" "
+    si  lig  > =  6 : retourne [
+        ( Col , lig  -  1 ),
+        ( col , lig  -  2 )
+    ]
+    else : return [( col , lig  -  1 )]
