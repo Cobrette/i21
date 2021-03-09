@@ -60,24 +60,33 @@ etude de la multiplication en python
 #question n°1:
 # [::-1] signifie vide : vide : -1
 
-def multiplication(n1,n2):
-    n1,n2=n1[::-1], n2[::-1]
 
-    n=len(n1)
-    n3=[0]*2*n
+def multiplication (n1,n2):
+    liste=[0]*(len(n1)+len(n2))
 
-    j=0
-    while j<n:
-        i,r = 0, 0
-        while i<n:
-            p=n3[i+j]+n1[i]*n2[j]+r
-            n3[i+j]=p%10
-            r=p//10
-            i+=1
-        n3[i+j]=r
-        j+=1
+    for i in range (len(n2)):
+        for j in range (len(n1)):
+            liste[i+j]+=n1[j]*n2[i]
+            if liste [i+j]>9:
+                liste[i+j+1] += liste[i+j]//10
+                liste [i+j]=liste[i+j]%10
+    return liste
 
-    return n3[::-1]
+#question n°2:
+lim = 10**20
+# on cree  une  liste  contenant  des  paires  de  nombres  aleatoire
+stest = []
+for i in  range (10000):
+     n1=randrange(lim)
+     n2=randrange(lim)
+     test +=[(n1 ,n2)]
+# on  stocke l’heure de  depart
+start=time()
+    for n1 ,n2 in test:
+        n3=n1*n2
+# on  recupere l’heure de fin et on  affiche  le  resultat
+end=time()
+print(end -start)
 
 
 
