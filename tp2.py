@@ -73,6 +73,7 @@ def multiplication (n1,n2):
     return liste
 
 #question n°2:
+'''
 lim = 10**20
 # on cree  une  liste  contenant  des  paires  de  nombres  aleatoire
 stest = []
@@ -87,7 +88,83 @@ start=time()
 # on  recupere l’heure de fin et on  affiche  le  resultat
 end=time()
 print(end -start)
+'''
+def time_mult_py(n,k):
+    lim=10**n
+    temp=[]
+    for i in  range (k):
+         n1=randrange(lim)
+         n2=randrange(lim)
+         temp +=[(n1 ,n2)]
 
+     start=time()
+     for n1,n2 in temp:
+         n3=n1*n2
 
+     end=time()
+     print(end -start)
+#question n°3:
+
+def nombre_alea(n):
+    return [randrange(10) for i in range(n)]
+
+def time_my_mult(n, k):
+    liste = [(nombre_alea(n),nombre_alea(n)) for i in range(k)]
+
+    start=time()
+    producs=[multiplication(n1,n2) for n1,n2 in liste ]
+    stop= time()
+
+    return stop- start
+
+'''
+             
+etude de l'instruction
+
+'''
+#question n°1:
+
+def time_plus(n,k):
+    liste=[0]*n
+
+    start=time()
+    for i in range (k):
+        liste=liste +[i]
+    stop=time()
+
+    return stop- start
+
+def time_inc (n,k):
+    liste = [0]*n
+
+    start=time()
+    for i in range (k):
+        liste+=liste +[i]
+    stop=time()
+
+    return stop- start
+
+def time_append(n,k):
+    liste = [0]*n
+
+    start=time()
+    for i in range (k):
+        liste.append(i)
+    stop=time()
+
+    return stop- start
+
+#question n°2:
+
+tailles=[256,512,1024,2048,4096,8192]
+
+plus_taille=[]
+inc_taille=[]
+append_taille=[]
+
+for t in tailles:
+    plus_taille +=[time_plus(t, 10)]
+    inc_taille +=[time_inc(t, 10)]
+    append_taille +=[time_append(t, 10)]
 
     
