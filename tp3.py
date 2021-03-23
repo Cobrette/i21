@@ -86,6 +86,7 @@ def expo_dg(x,k):
     return l
 #exo 3: Nombres de Fibonacci
 #question 1 :
+'''
 def fibo(n):
     f0 = 0
     f1 = 1
@@ -98,3 +99,51 @@ def fibo(n):
         fn = f1 + f0
         f0,f1 = f1,fn
     return fn
+'''
+def fibo(n):
+    i=2
+    if n==0:
+        return 0
+    if n==1:
+        return 1
+    else:
+        l=[0,1]
+        while i<=n:
+            l+=[l[i-l]+l[i-2]]
+            i+=l
+        return l[-l]
+
+
+
+#question 2:
+def matmult(m1,m2):
+    l=[[0,0],[0,0]]
+    l[0][0]=m1[0][0]*m2[0][0]+m1[0][1]*m2[1][0]
+    l[0][1]=m1[0][0]*m2[0][1]+m1[0][1]*m2[1][1]
+    l[1][0]=m1[1][0]*m2[0][0]+m1[1][1]*m2[1][0]
+    l[1][1]=m1[1][0]*m2[0][1]+m1[1][1]*m2[1][1]
+    return l
+
+def matcarre(m):
+    chips=matmult(m,m)
+    return chips
+
+#question 3:
+def fibo2(n):
+    l=[]
+    while n!=0:
+        if n%2==0:
+            n=n/2
+            l=[1]+l
+        else:
+            n=n-1
+            l=[0]+l
+    m=[[1,0],[0,1]]
+    f=[[1,1],[1,0]]
+    for element in l:
+        if element==0:
+            m=matmult(m,f)
+        else:
+            m=matcarre(m)
+    return m[0][1]
+
