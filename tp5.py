@@ -90,3 +90,8 @@ def tri_partiel(T,a,b):
         cpt+=1
         i+=1
     return cpt
+#question 3
+def fusion_partielle(T,a,b):
+    temps,cpt=fusionner(T[:a],T[a:b])
+    T[:b]=temps
+    return cpt
