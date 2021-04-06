@@ -77,3 +77,16 @@ def fusionner(T1,T2):
             T3+=T1[i:]
 
     return T3,cpt
+#question 2
+def tri_partiel(T,a,b):
+    cpt=0
+    i=a+1
+    while i<b:
+        j=i
+        while j>a and T[j-1]>T[j]:
+            T[j-1],T[j]=T[j],T[j-1]
+            j-=1
+            cpt+=1
+        cpt+=1
+        i+=1
+    return cpt
