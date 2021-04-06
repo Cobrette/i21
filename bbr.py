@@ -2,6 +2,8 @@
 échanger pour obtenir un tableau à trois couleurs
 trié en bleu/blanc/rouge"""
 
+
+"""marche pas sur moodle"""
 def bbr(t):
     b=0
     w=0
