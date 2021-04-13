@@ -65,3 +65,33 @@ def recherche_binaire(T,x):
             i+=2
     return -1,i
         
+#question n°3:
+
+def complexité_binaire(T):
+
+
+
+    
+def complexité_ternaire(T):
+
+
+
+
+
+'''Exercice n°2:'''
+#question n°1:
+def recherche_zero(a,b,prec):
+    l=[]
+    while(b-a)>=prec:
+        m=(a+b)/2
+        if sin(m)==0:
+            l+=[a,b]
+            return l
+        elif (sin(m)>0 and sin(b)>sin(a)) or (sin(m)<0 and sin(b)<sin(a)):
+            b=m
+            l+=[(a,b)]
+        else:
+            a=m
+            l+=[(a,b)]
+    return l
+                     
