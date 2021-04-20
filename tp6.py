@@ -149,3 +149,16 @@ def recherche_zero(a,b,prec):
             l+=[(a,b)]
     return l
                      
+'''Exercice n°3:'''
+def recherche_max(a,b,prec):
+    l=[[a,b]]
+    g,d=a,b
+    while(b-g)>=prec:
+        x1=(2*g+d)/3
+        x2=(2*d+g)/3
+        if sin(x1>sin(x2):
+               d=x2
+        elif sin(x1)<sin(x2):
+               g=x1
+        l+=[[g,d]]
+    return l
