@@ -153,10 +153,10 @@ def recherche_zero(a,b,prec):
 def recherche_max(a,b,prec):
     l=[[a,b]]
     g,d=a,b
-    while(b-g)>=prec:
+    while(d-g)>=prec:
         x1=(2*g+d)/3
         x2=(2*d+g)/3
-        if sin(x1>sin(x2):
+        if sin(x1)>sin(x2):
                d=x2
         elif sin(x1)<sin(x2):
                g=x1
