@@ -64,18 +64,72 @@ def recherche_binaire(T,x):
             g=m+1
             i+=2
     return -1,i
+
+def recherche_ternaire(T,x):
+    g=0
+    d=len(T)-1
+    i=0
+    while g<=d:
+        m1=(g+d)//3
+        m2=(g+d)*2//3
+        if T[m1]>x:
+            d=m1-1
+            i+=1
+        elif t[m2]>x:
+            d=m2-1
+            g=m1+1
+            i+=2
+        elif T[m1]==x:
+            i+=3
+            return m,i
+        elif T[m2]==x:
+            i+=4
+            return m2,i
+        else:
+            g=m2+1
+            i+=4
+    return-1,i
+
+'''moodle'''
+def recherche_ternaire(T,x):
+    g=0
+    d=len(T)-1
+    i=0
+    while g<=d:
+        x1=(2*g+d)//3
+        x2=(g+2*d)//3
+        if T[x1]==x:
+            i+=1
+            return x1,i
+        elif T[x2]==x:
+            i+=2
+            return x2,i
+        elif T[x1]>x:
+            d=x1-1
+            i+=3
+        elif T[x2]>x:
+            d=x2-1
+            g=x1+1
+            i+=3
+        else:
+            g=x2+1
+            i+=3
+    return-1,i
         
 #question n°3:
 
 def complexité_binaire(T):
+    somme=0
+    for element in T:
+        somme+=recherche_binaire(T,element)[1]
+    return somme/len(T)
 
 
-
-    
 def complexité_ternaire(T):
-
-
-
+    somme=0
+    for element in T:
+        somme+=recherche_ternaire(T,element)[1]
+    return somme/len(T)
 
 
 '''Exercice n°2:'''
